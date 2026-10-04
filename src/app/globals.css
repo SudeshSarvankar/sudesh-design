@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f0e5;
+  --foreground: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: #f4f0e5;
+  --color-cream-2: #f7f3eb;
+  --color-ink: #3a3732;
+  --color-paper: #fffdf8;
+  --color-muted: #626c81;
+  --color-line: #d8d0c2;
+  --color-soft: #e8e2d4;
+  --color-brown: #b9a48a;
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-inter: var(--font-inter-family), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-script: var(--font-yellowtail), cursive;
+  --font-hand: var(--font-caveat), cursive;
+  --font-display: var(--font-inter-family), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.desk-grid {
+  background-color: #f4f0e5;
+  background-image:
+    linear-gradient(to right, rgba(90, 100, 80, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(90, 100, 80, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dot-grid {
+  background-color: #f7f3eb;
+  background-image: radial-gradient(rgba(90, 80, 60, 0.16) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.notebook-dots {
+  background-color: #fffcf7;
+  background-image: radial-gradient(rgba(70, 90, 110, 0.18) 1.1px, transparent 1.1px);
+  background-size: 16px 16px;
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track-slow {
+  animation: marquee 48s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.torn-top,
+.torn-bottom {
+  display: block;
+  width: 100%;
+  height: 42px;
+  pointer-events: none;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(58, 55, 50, 0.55);
+  outline-offset: 3px;
+}
+
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .marquee-track-slow {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
