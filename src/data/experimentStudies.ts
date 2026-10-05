@@ -5,6 +5,7 @@ export type StudyBlock =
   | { type: "quote"; text: string }
   | { type: "callout"; text: string }
   | { type: "arrow" }
+  | { type: "list"; items: string[] }
   | {
       type: "step";
       number: string;
