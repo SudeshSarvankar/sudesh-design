@@ -5,7 +5,7 @@ export const site = {
   role: "Senior Product Designer",
   expertRole: "UX leadership · Product strategy",
   eyebrow: "Case studies",
-  tagline: "Eight years in. Still curious. Always designing.",
+  tagline: "8+ years of asking “Why?”—and turning the answers into better products.",
   journalLine:
     "Eight years in. Still curious. Turning complexity into experiences people love.",
   taglineAsk: "Need a problem solver?",
