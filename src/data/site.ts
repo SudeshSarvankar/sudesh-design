@@ -22,6 +22,7 @@ export const site = {
     resume: "/Sudesh_Sarvankar_Resume.pdf",
     behance: "https://www.behance.net/sudeshsarvankar",
   },
+  showResume: false,
   skills: [
     "Product strategy",
     "Interaction design",

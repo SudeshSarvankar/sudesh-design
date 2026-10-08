@@ -51,8 +51,15 @@ export function Navbar() {
           {site.monogram}
         </Link>
         <div className="flex min-h-12 min-w-0 flex-1 items-center rounded-full border border-line bg-cream-2 px-1.5 py-1 shadow-[0_12px_40px_rgba(70,55,25,0.08)] md:h-[56px] md:flex-none md:px-3 lg:h-[64px] lg:px-4">
-          <ul className="grid w-full grid-cols-4 items-center md:flex md:w-auto md:gap-1">
-            {links.map((link) => {
+          <ul
+            className={cn(
+              "grid w-full items-center md:flex md:w-auto md:gap-1",
+              site.showResume ? "grid-cols-4" : "grid-cols-3",
+            )}
+          >
+            {links
+              .filter((link) => site.showResume || link.label !== "Resume")
+              .map((link) => {
               const Icon = link.icon;
               const active =
                 !link.external && pathname === "/" && hash === link.hash;
