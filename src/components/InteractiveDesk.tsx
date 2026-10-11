@@ -258,7 +258,7 @@ export function InteractiveDesk() {
           EXPERIENCES
         </Phrase>
         <motion.p
-          className="absolute z-10 hidden max-w-[220px] font-serif text-[17px] italic text-ink/80 sm:block"
+          className="absolute z-10 hidden whitespace-nowrap bg-[#ead7b8] px-2.5 py-1 font-serif text-[17px] font-bold italic text-ink sm:block"
           animate={
             chaos
               ? { left: "62%", top: "56%", opacity: 1 }

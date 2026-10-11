@@ -1,3 +1,5 @@
+import { DataEaPilotStudy } from "@/components/DataEaPilotStudy";
+import { EmployeeCenterStudy } from "@/components/EmployeeCenterStudy";
 import { StudyBackLink } from "@/components/StudyBackLink";
 import { getProject, projects } from "@/data/projects";
 import { site } from "@/data/site";
@@ -32,6 +34,14 @@ export default async function CaseStudyPage({
   if (!project) notFound();
   if (project.href) redirect(project.href);
   if (project.comingSoon) redirect("/#featured-work");
+
+  if (project.slug === "employee-center") {
+    return <EmployeeCenterStudy project={project} />;
+  }
+
+  if (project.slug === "ubs-data-ea-pilot") {
+    return <DataEaPilotStudy project={project} />;
+  }
 
   return (
     <article className="bg-cream pb-24 pt-28">

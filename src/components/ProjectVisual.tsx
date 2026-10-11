@@ -18,7 +18,8 @@ export function ProjectVisual({
       )}
       style={{ background: project.accent }}
     >
-      {project.slug === "ai-concept" ? <AiBanner /> : null}
+      {project.slug === "employee-center" ? <EmployeeBanner /> : null}
+      {project.slug === "ubs-data-ea-pilot" ? <DataEaBanner /> : null}
       {project.slug === "fielda" ? <FieldaBanner src={project.cover!} /> : null}
       {project.slug === "bajaj-markets" ? <BajajBanner src={project.cover!} /> : null}
       {project.slug === "quality-kiosk" ? (
@@ -73,49 +74,58 @@ function Label({ children }: { children: ReactNode }) {
   );
 }
 
-function AiBanner() {
+function DataEaBanner() {
   return (
     <div className="absolute inset-0 bg-[#f3eee6]">
-      <div className="absolute -left-16 top-10 h-56 w-56 rounded-full bg-[#eadfd8]/80" />
-      <div className="absolute -right-10 bottom-0 h-48 w-48 rounded-full bg-[#e4e8f0]/90" />
-      <div className="absolute inset-0 flex">
-        <div className="flex w-[46%] flex-col justify-between p-7">
-          <Label>Studio note</Label>
-          <div>
-            <p className="font-serif text-[clamp(2.4rem,6vw,3.4rem)] leading-[0.9] text-ink/80">
-              Why?
+      <div className="absolute inset-0 flex items-center justify-center p-6">
+        <div className="w-full max-w-[520px] overflow-hidden rounded-[18px] border border-white/80 bg-paper shadow-[0_16px_32px_rgba(58,55,50,0.1)]">
+          <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+            <p className="text-[11px] font-medium text-ink/70">Architecture Assistant</p>
+            <p className="text-[10px] uppercase tracking-[0.12em] text-ink/35">
+              6 sources · live
             </p>
-            <p className="mt-3 max-w-[16ch] text-[13px] leading-relaxed text-ink/50">
-              A model that asks before it draws — then hands you a quieter path.
-            </p>
+          </div>
+          <div className="p-3">
+            <div className="rounded-full bg-[#f6f1ea] px-3 py-2 text-[11px] text-ink/40">
+              Ask the architecture…
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {["End of life", "Dependencies", "Ownership"].map((label) => (
+                <div key={label} className="rounded-xl bg-[#f6f1ea] px-2 py-3">
+                  <p className="text-[10px] uppercase tracking-[0.12em] text-ink/40">
+                    {label}
+                  </p>
+                  <div className="mt-2 h-1.5 w-3/4 rounded bg-ink/10" />
+                  <div className="mt-1 h-1.5 w-1/2 rounded bg-ink/10" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="relative flex-1">
-          <div className="absolute left-[8%] top-[18%] w-[78%] rounded-2xl border border-white/80 bg-white/50 p-3 backdrop-blur-sm">
-            <div className="h-2 w-2/3 rounded-full bg-[#e7ddd4]" />
-            <div className="mt-2 h-2 w-1/2 rounded-full bg-[#dde4ee]" />
+      </div>
+    </div>
+  );
+}
+
+function EmployeeBanner() {
+  return (
+    <div className="absolute inset-0 bg-[#f3eee6]">
+      <div className="absolute inset-0 flex items-center justify-center p-6">
+        <div className="w-full max-w-[520px] overflow-hidden rounded-[18px] border border-white/80 bg-paper shadow-[0_16px_32px_rgba(58,55,50,0.1)]">
+          <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+            <p className="text-[11px] font-medium text-ink/70">Employee Center</p>
+            <div className="h-6 w-40 rounded-full bg-[#f3f1ea]" />
           </div>
-          <div className="absolute left-[18%] top-[38%] w-[70%] rounded-2xl border border-white/80 bg-white/70 p-4 shadow-[0_12px_24px_rgba(58,55,50,0.06)]">
-            <div className="flex gap-2">
-              <span className="rounded-full bg-[#efe6dc] px-2.5 py-1 text-[10px] text-ink/55">
-                ask
-              </span>
-              <span className="rounded-full bg-[#e7ece4] px-2.5 py-1 text-[10px] text-ink/55">
-                sketch
-              </span>
-              <span className="rounded-full bg-[#e4e8f2] px-2.5 py-1 text-[10px] text-ink/55">
-                ship
-              </span>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              <div className="h-16 rounded-xl bg-[#f6f1ea]" />
-              <div className="h-16 rounded-xl bg-[#eef1f6]" />
-            </div>
-          </div>
-          <div className="absolute bottom-[12%] right-[10%] w-[54%] rounded-2xl bg-[#2a2723]/[0.04] p-3">
-            <p className="font-serif text-[13px] italic leading-snug text-ink/45">
-              Intent in. A quieter path out.
-            </p>
+          <div className="grid grid-cols-3 gap-2 p-3">
+            {["Search", "My requests", "Forms"].map((label) => (
+              <div key={label} className="rounded-xl bg-[#f6f1ea] px-2 py-3">
+                <p className="text-[10px] uppercase tracking-[0.12em] text-ink/40">
+                  {label}
+                </p>
+                <div className="mt-2 h-1.5 w-3/4 rounded bg-ink/10" />
+                <div className="mt-1 h-1.5 w-1/2 rounded bg-ink/10" />
+              </div>
+            ))}
           </div>
         </div>
       </div>
