@@ -169,7 +169,7 @@ export function EolAnswerScreen() {
             <span className="font-semibold">Payments Gateway</span> is the most
             urgent. <sup>1</sup>
           </p>
-          <div className="overflow-x-auto">
+          <div className="max-w-full overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-[640px] text-left text-[13px]">
               <thead className="text-[11px] uppercase tracking-[0.12em] text-ink/40">
                 <tr>
@@ -287,7 +287,7 @@ export function OwnerReviewScreen() {
         <Bar title="Your applications" right={<Chip tone="wait">3 to review</Chip>} />
         <div className="p-5">
           <p className="text-[13px] text-ink/50">12 applications · 3 items need review</p>
-          <div className="mt-4 overflow-x-auto">
+          <div className="mt-4 max-w-full overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-[560px] text-left text-[13px]">
               <thead className="text-[11px] uppercase tracking-[0.12em] text-ink/40">
                 <tr>

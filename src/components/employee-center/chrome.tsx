@@ -5,7 +5,7 @@ export const brand = "#c45c4a";
 
 export function Path({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.16em] text-ink/35">
+    <p className="mb-2 break-words text-[11px] font-medium uppercase tracking-[0.16em] text-ink/35">
       {children}
     </p>
   );

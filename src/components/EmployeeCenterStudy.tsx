@@ -39,7 +39,7 @@ const toc = [
 export function EmployeeCenterStudy({ project }: { project: Project }) {
   return (
     <article className="bg-cream pb-20 pt-28">
-      <div className="mx-auto w-full max-w-[1080px] px-6 md:px-16">
+      <div className="mx-auto w-full max-w-[1080px] px-4 sm:px-6 md:px-16">
         <StudyBackLink href="/#featured-work" label="Back to work" variant="minimal" />
         <p className="mt-10 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/40">
           UBS · GCOO Group Technology · Employee Center
@@ -109,7 +109,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
             <a
               key={href}
               href={href}
-              className="rounded-full border border-line bg-paper px-3 py-1.5 text-[13px] text-ink/70 transition hover:text-ink"
+              className="inline-flex min-h-11 items-center rounded-full border border-line bg-paper px-3 py-1.5 text-[13px] text-ink/70 transition hover:text-ink"
             >
               {label}
             </a>
@@ -525,7 +525,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
             <p className="text-[13px]">Visitor pass · for J. Shah</p>
           </PersonaHome>
         </div>
-        <div className="mt-8 overflow-x-auto">
+        <div className="mt-8 max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[640px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>
@@ -607,7 +607,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
             </div>
           ))}
         </div>
-        <div className="mt-8 overflow-x-auto">
+        <div className="mt-8 max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[720px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>
@@ -734,7 +734,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
         <p className="mt-3 text-[13px] text-ink/45">
           Criteria are real WCAG 2.1 · issues reimagined from the audit
         </p>
-        <div className="mt-6 overflow-x-auto">
+        <div className="mt-6 max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[760px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>
@@ -877,7 +877,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
             </div>
           ))}
         </div>
-        <div className="mt-12 rounded-[24px] bg-[#f6e6df] px-6 py-10 md:px-10">
+        <div className="mt-12 rounded-[24px] bg-[#f6e6df] px-4 py-8 sm:px-6 sm:py-10 md:px-10">
           <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink/45">
             Why tickets dropped
           </p>
@@ -923,7 +923,7 @@ export function EmployeeCenterStudy({ project }: { project: Project }) {
         </p>
       </Section>
 
-      <div className="mx-auto mt-6 w-full max-w-[1080px] border-t border-line px-6 pt-12 md:px-16">
+      <div className="mx-auto mt-6 w-full max-w-[1080px] border-t border-line px-4 pt-12 sm:px-6 md:px-16">
         <p className="max-w-[18ch] font-inter text-[clamp(1.8rem,4vw,2.6rem)] font-semibold leading-tight tracking-[-0.03em] text-ink">
           When people can find help without asking for it, the portal has done
           its job.
@@ -951,7 +951,7 @@ function Section({
     <section
       id={id}
       className={cn(
-        "mt-4 scroll-mt-28 px-6 py-16 md:px-16 md:py-20",
+        "mt-4 scroll-mt-28 px-4 py-12 sm:px-6 sm:py-16 md:px-16 md:py-20",
         tone === "paper" ? "bg-paper" : "bg-cream",
       )}
     >

@@ -15,9 +15,9 @@ export function PlayLab() {
   const [message, setMessage] = useState("Pick an object. Don’t overthink it.");
 
   return (
-    <div className="mt-14 desk-grid min-h-[420px] rounded-sm border border-ink/10 p-8">
-      <p className="font-hand text-2xl text-ink/80">{message}</p>
-      <div className="mt-10 flex flex-wrap items-end gap-10">
+    <div className="mt-14 desk-grid min-h-[420px] rounded-sm border border-ink/10 p-4 sm:p-8">
+      <p className="font-hand text-xl text-ink/80 sm:text-2xl">{message}</p>
+      <div className="mt-8 flex flex-wrap items-end gap-6 sm:mt-10 sm:gap-10">
         <InteractiveObject
           label="Nudge plant"
           hint="HI"

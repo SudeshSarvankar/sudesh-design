@@ -50,7 +50,7 @@ function Shot({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[18px] bg-white shadow-[0_14px_28px_rgba(58,55,50,0.1)] ring-1 ring-white/70",
+        "relative overflow-hidden rounded-[18px] bg-white shadow-[0_14px_28px_rgba(58,55,50,0.1)] ring-1 ring-white/70",
         className,
       )}
     >
@@ -77,9 +77,9 @@ function Label({ children }: { children: ReactNode }) {
 function DataEaBanner() {
   return (
     <div className="absolute inset-0 bg-[#f3eee6]">
-      <div className="absolute inset-0 flex items-center justify-center p-6">
+      <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
         <div className="w-full max-w-[520px] overflow-hidden rounded-[18px] border border-white/80 bg-paper shadow-[0_16px_32px_rgba(58,55,50,0.1)]">
-          <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+          <div className="flex items-center justify-between gap-2 border-b border-line px-3 py-2 sm:px-4 sm:py-2.5">
             <p className="text-[11px] font-medium text-ink/70">Architecture Assistant</p>
             <p className="text-[10px] uppercase tracking-[0.12em] text-ink/35">
               6 sources · live
@@ -110,11 +110,11 @@ function DataEaBanner() {
 function EmployeeBanner() {
   return (
     <div className="absolute inset-0 bg-[#f3eee6]">
-      <div className="absolute inset-0 flex items-center justify-center p-6">
+      <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
         <div className="w-full max-w-[520px] overflow-hidden rounded-[18px] border border-white/80 bg-paper shadow-[0_16px_32px_rgba(58,55,50,0.1)]">
-          <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+          <div className="flex items-center justify-between border-b border-line px-3 py-2 sm:px-4 sm:py-2.5">
             <p className="text-[11px] font-medium text-ink/70">Employee Center</p>
-            <div className="h-6 w-40 rounded-full bg-[#f3f1ea]" />
+            <div className="h-5 w-16 rounded-full bg-[#f3f1ea] sm:h-6 sm:w-40" />
           </div>
           <div className="grid grid-cols-3 gap-2 p-3">
             {["Search", "My requests", "Forms"].map((label) => (
@@ -137,17 +137,17 @@ function FieldaBanner({ src }: { src: string }) {
   return (
     <div className="absolute inset-0 bg-[#ece8de]">
       <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-[#d7e2d4]" />
-      <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] flex-col justify-between p-7">
+      <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] flex-col justify-between p-3 sm:p-7">
         <Label>Field operations</Label>
         <div>
-          <p className="font-serif text-[20px] leading-tight text-ink/70">
+          <p className="font-serif text-[13px] leading-tight text-ink/70 sm:text-[20px]">
             Maps, forms, and the work on the ground.
           </p>
           <div className="mt-4 space-y-2">
             {["SO-79  Pole inspection", "TI-63  Line repair"].map((item) => (
               <div
                 key={item}
-                className="rounded-xl bg-white/85 px-3 py-2 text-[11px] text-ink/60 shadow-sm"
+                className="hidden rounded-xl bg-white/85 px-3 py-2 text-[11px] text-ink/60 shadow-sm sm:block"
               >
                 {item}
               </div>
@@ -169,10 +169,10 @@ function BajajBanner({ src }: { src: string }) {
   return (
     <div className="absolute inset-0 bg-[#ece7df]">
       <div className="absolute right-[4%] top-[12%] h-[76%] w-[46%] rounded-[46%] bg-[#d9e3f2]" />
-      <div className="absolute inset-y-0 left-0 z-10 flex w-[52%] flex-col justify-between p-7">
+      <div className="absolute inset-y-0 left-0 z-10 flex w-[52%] flex-col justify-between p-3 sm:p-7">
         <Label>Finance &amp; shopping</Label>
         <div>
-          <p className="font-serif text-[28px] leading-[0.95] text-ink/75">
+          <p className="font-serif text-[16px] leading-[0.95] text-ink/75 sm:text-[28px]">
             One wallet.
             <br />
             One aisle.
@@ -199,13 +199,13 @@ function QualityBanner({ src }: { src: string }) {
         position="70% 32%"
         zoom={1.14}
       />
-      <div className="absolute left-6 top-6 z-10">
+      <div className="absolute left-3 top-3 z-10 sm:left-6 sm:top-6">
         <Label>Quality</Label>
-        <div className="mt-5 grid h-16 w-16 place-items-center rounded-full border border-white/80 bg-white/80 text-[11px] text-ink/50 shadow-sm">
+        <div className="mt-3 grid h-12 w-12 place-items-center rounded-full border border-white/80 bg-white/80 text-[11px] text-ink/50 shadow-sm sm:mt-5 sm:h-16 sm:w-16">
           96%
         </div>
       </div>
-      <div className="absolute bottom-5 left-6 z-10 flex gap-2 text-[10px] text-ink/45">
+      <div className="absolute bottom-3 left-3 z-10 flex max-w-[70%] flex-wrap gap-1.5 text-[10px] text-ink/45 sm:bottom-5 sm:left-6 sm:gap-2">
         <span className="rounded-full bg-white/85 px-2.5 py-1">Passed</span>
         <span className="rounded-full bg-white/70 px-2.5 py-1">Running</span>
         <span className="rounded-full bg-white/55 px-2.5 py-1">Blocked</span>
@@ -218,10 +218,10 @@ function BlubunnyBanner({ src }: { src: string }) {
   return (
     <div className="absolute inset-0 bg-[#e9efe6]">
       <div className="absolute right-[-18%] top-[-28%] h-[80%] w-[62%] rounded-full bg-[#dde8d8]" />
-      <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] flex-col justify-between p-7">
+      <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] flex-col justify-between p-3 sm:p-7">
         <Label>Marketplace</Label>
         <div>
-          <p className="font-serif text-[24px] leading-tight text-ink/70">
+          <p className="font-serif text-[15px] leading-tight text-ink/70 sm:text-[24px]">
             One listing,
             <br />
             every aisle.
@@ -256,11 +256,11 @@ function RpaBanner({ src }: { src: string }) {
         className="absolute left-[6%] top-[10%] h-[62%] w-[70%] rounded-[20px] transition duration-700 group-hover/card:-translate-y-1"
         position="center"
       />
-      <div className="absolute bottom-5 right-5 w-[42%] rounded-2xl bg-white/80 p-3 shadow-[0_10px_20px_rgba(58,55,50,0.08)]">
+      <div className="absolute bottom-3 right-3 w-[46%] rounded-2xl bg-white/80 p-2 shadow-[0_10px_20px_rgba(58,55,50,0.08)] sm:bottom-5 sm:right-5 sm:w-[42%] sm:p-3">
         <p className="text-[10px] uppercase tracking-[0.14em] text-ink/35">
           Control room
         </p>
-        <p className="mt-1 font-serif text-[18px] text-ink/70">Documents 32k</p>
+        <p className="mt-1 font-serif text-[13px] text-ink/70 sm:text-[18px]">Documents 32k</p>
         <p className="mt-1 text-[11px] text-ink/45">Mail · Rates · Invoices</p>
       </div>
     </div>

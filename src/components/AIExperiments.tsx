@@ -16,17 +16,17 @@ export function AIExperiments() {
       aria-label="Gen AI experiments"
       className="scroll-mt-24 bg-white"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 py-20 md:px-[88px] md:py-[100px]">
+      <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 md:px-[88px] md:py-[100px]">
         <header className="mb-12 max-w-2xl md:mb-16">
-          <h2 className="font-inter text-[36px] font-semibold tracking-[-0.03em] text-ink md:text-[48px]">
+          <h2 className="font-inter text-[28px] font-semibold tracking-[-0.03em] text-ink sm:text-[36px] md:text-[48px]">
             Gen AI experiments
           </h2>
-          <p className="mt-4 font-serif text-[22px] italic text-muted">
+          <p className="mt-4 font-serif text-[18px] italic text-muted sm:text-[22px]">
             Late-night explorations with AI
           </p>
         </header>
         <div className="relative overflow-hidden rounded-[24px] dot-grid">
-          <div className="relative flex gap-5 overflow-x-auto p-6 md:grid md:grid-cols-3 md:overflow-visible md:p-10">
+          <div className="relative flex gap-4 overflow-x-auto p-4 sm:gap-5 sm:p-6 md:grid md:grid-cols-3 md:overflow-visible md:p-10">
             {experiments.map((item, index) => (
               <motion.article
                 key={item.slug}
@@ -35,7 +35,7 @@ export function AIExperiments() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="min-w-[260px] overflow-hidden rounded-[20px] bg-white shadow-[0_12px_30px_rgba(40,32,18,0.06)] md:min-w-0"
+                className="min-w-[min(260px,calc(100vw-4.5rem))] overflow-hidden rounded-[20px] bg-white shadow-[0_12px_30px_rgba(40,32,18,0.06)] md:min-w-0"
               >
                 <div className="relative aspect-[5/3] overflow-hidden" style={{ background: item.accent }}>
                   <ExperimentPreview kind={item.preview} />
@@ -49,7 +49,7 @@ export function AIExperiments() {
                   <Link
                     href={`/experiments/${item.slug}`}
                     aria-label={`Read more: ${item.title}`}
-                    className="mt-4 inline-flex items-center gap-1 text-sm text-ink"
+                    className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm text-ink"
                     onMouseEnter={() => setHint("READ")}
                     onMouseLeave={() => setHint(null)}
                   >

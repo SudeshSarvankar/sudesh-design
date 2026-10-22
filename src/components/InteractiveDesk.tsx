@@ -139,8 +139,10 @@ export function InteractiveDesk() {
       return rect.top <= 8 && rect.bottom >= window.innerHeight * 0.55;
     };
 
+    const desktop = window.matchMedia("(min-width: 1024px)");
+
     const onWheel = (event: WheelEvent) => {
-      if (!inHeroPin() || jumpingRef.current) return;
+      if (!desktop.matches || !inHeroPin() || jumpingRef.current) return;
       const current = modeRef.current;
       if (event.deltaY > 28 && current !== "clean") {
         event.preventDefault();
@@ -154,11 +156,17 @@ export function InteractiveDesk() {
     };
 
     const onTouchStart = (event: TouchEvent) => {
+      if (!desktop.matches) return;
       touchStartY.current = event.touches[0]?.clientY ?? null;
     };
 
     const onTouchMove = (event: TouchEvent) => {
-      if (touchStartY.current == null || !inHeroPin() || jumpingRef.current) {
+      if (
+        !desktop.matches ||
+        touchStartY.current == null ||
+        !inHeroPin() ||
+        jumpingRef.current
+      ) {
         return;
       }
       const currentY = event.touches[0]?.clientY;
@@ -181,7 +189,7 @@ export function InteractiveDesk() {
     window.addEventListener("touchmove", onTouchMove, { passive: false });
 
     const onScroll = () => {
-      if (jumpingRef.current) return;
+      if (!desktop.matches || jumpingRef.current) return;
       const el = document.getElementById("hero");
       if (!el) return;
       const progress =
@@ -208,12 +216,12 @@ export function InteractiveDesk() {
     <section
       id="hero"
       aria-label="Hero"
-      className="relative isolate h-[200vh] overflow-x-clip bg-cream"
+      className="relative isolate h-[100svh] overflow-x-clip bg-cream lg:h-[200vh]"
     >
-      <div className="sticky top-0 flex h-screen flex-col overflow-x-clip px-3 pb-8 pt-24 sm:px-6 md:pt-28">
+      <div className="flex h-[100svh] flex-col overflow-x-clip px-4 pb-6 pt-[5.25rem] lg:sticky lg:top-0 lg:h-screen lg:px-6 lg:pb-8 lg:pt-28">
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-20"
+        className="pointer-events-none absolute inset-0 z-20 hidden lg:block"
         animate={{ opacity: state.lamp ? 0.5 : 0 }}
         transition={{ duration: 0.45 }}
         style={{
@@ -223,6 +231,9 @@ export function InteractiveDesk() {
       />
 
       <div className="relative mx-auto min-h-0 w-full flex-1 max-w-[1280px]">
+        <MobileCopy chaos={chaos} />
+
+        <div className="absolute inset-0 hidden lg:block">
         <motion.div
           className={cn(
             "absolute inset-x-[2%] inset-y-[4%] overflow-visible sm:inset-x-[6%]",
@@ -234,7 +245,6 @@ export function InteractiveDesk() {
         <Phrase
           chaos={chaos}
           chaosPos={{ left: "22%", top: "9%" }}
-          className="hidden sm:flex"
         >
           THE WORLD IS
           <br />
@@ -243,7 +253,6 @@ export function InteractiveDesk() {
         <Phrase
           chaos={chaos}
           chaosPos={{ left: "52%", top: "26%" }}
-          className="hidden sm:flex"
         >
           UNFINISHED
           <br />
@@ -258,7 +267,7 @@ export function InteractiveDesk() {
           EXPERIENCES
         </Phrase>
         <motion.p
-          className="absolute z-10 hidden whitespace-nowrap bg-[#ead7b8] px-2.5 py-1 font-serif text-[17px] font-bold italic text-ink sm:block"
+          className="absolute z-10 whitespace-nowrap bg-[#ead7b8] px-2.5 py-1 font-serif text-[17px] font-bold italic text-ink"
           animate={
             chaos
               ? { left: "62%", top: "56%", opacity: 1 }
@@ -309,7 +318,7 @@ export function InteractiveDesk() {
               {site.taglineAsk}{" "}
               <a
                 href={site.social.email}
-                className="underline decoration-ink/25 underline-offset-4 transition hover:text-ink"
+                className="pointer-events-auto underline decoration-ink/25 underline-offset-4 transition hover:text-ink"
               >
                 {site.email}
               </a>
@@ -317,7 +326,7 @@ export function InteractiveDesk() {
           </div>
         </motion.div>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "6%", top: "50%", width: 88 }} cleanPos={{ left: "4%", top: "16%", width: 124 }} className="hidden md:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "6%", top: "50%", width: 88 }} cleanPos={{ left: "4%", top: "16%", width: 124 }}>
           <InteractiveObject label="Go skydiving" hint="JUMP" pressed={state.skydive} float={chaos && !reduce} onActivate={() => toggle("skydive")}>
             <motion.div
               className="rotate-[-8deg]"
@@ -332,13 +341,13 @@ export function InteractiveDesk() {
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "8%", top: "22%", width: 150 }} cleanPos={{ left: "-6%", top: "24%", width: 190 }} className="hidden md:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "8%", top: "22%", width: 150 }} cleanPos={{ left: "-6%", top: "24%", width: 190 }}>
           <InteractiveObject label="Toggle desk lamp" hint="LIGHT" pressed={state.lamp} float={chaos && !reduce} onActivate={() => toggle("lamp")}>
             <Lamp className="h-auto w-full" />
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "26%", top: "26%", width: 108 }} cleanPos={{ left: "-2%", top: "72%", width: 130 }} className="hidden md:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "26%", top: "26%", width: 108 }} cleanPos={{ left: "-2%", top: "72%", width: 130 }}>
           <InteractiveObject label="Put on headphones" hint="LISTEN" pressed={state.headphones} float={chaos && !reduce} onActivate={() => toggle("headphones")}>
             <Headphones className="h-auto w-full" />
           </InteractiveObject>
@@ -361,20 +370,20 @@ export function InteractiveDesk() {
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "64%", top: "4%", width: 168 }} cleanPos={{ left: "88%", top: "34%", width: 190 }} className="hidden sm:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "64%", top: "4%", width: 168 }} cleanPos={{ left: "88%", top: "34%", width: 190 }}>
           <InteractiveObject label="Sip chai" hint="SIP" pressed={state.coffee} float={chaos && !reduce} onActivate={() => toggle("coffee")}>
             <Chai className="h-auto w-full" />
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "78%", top: "5%", width: 88 }} cleanPos={{ left: "92%", top: "8%", width: 96 }} className="hidden sm:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "78%", top: "5%", width: 88 }} cleanPos={{ left: "92%", top: "8%", width: 96 }}>
           <div className="relative">
             <SparkCube className="h-auto w-full" />
             <Folder className="absolute -bottom-2 left-6 h-auto w-16" />
           </div>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "68%", top: "30%", width: 118 }} cleanPos={{ left: "88%", top: "24%", width: 130 }} className="hidden md:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "68%", top: "30%", width: 118 }} cleanPos={{ left: "88%", top: "24%", width: 130 }}>
           <InteractiveObject label="Toggle monitor" hint={state.monitor ? "SLEEP" : "ON"} pressed={state.monitor} float={chaos && !reduce} onActivate={() => toggle("monitor")}>
             <div className="relative">
               <Monitor className="h-auto w-full" />
@@ -391,13 +400,13 @@ export function InteractiveDesk() {
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "30%", top: "66%", width: 110 }} cleanPos={{ left: "18%", top: "78%", width: 90 }} className="hidden sm:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "30%", top: "66%", width: 110 }} cleanPos={{ left: "18%", top: "78%", width: 90 }}>
           <InteractiveObject label="Reveal sticky note" hint="NOTE" pressed={state.sticky} float={chaos && !reduce} onActivate={() => toggle("sticky")}>
             <StickyNotes className="h-auto w-full" />
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "48%", top: "48%", width: 130 }} cleanPos={{ left: "78%", top: "48%", width: 140 }} className="hidden md:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "48%", top: "48%", width: 130 }} cleanPos={{ left: "78%", top: "48%", width: 140 }}>
           <InteractiveObject label="Peel a stamp" hint="POST" pressed={state.stamps} float={chaos && !reduce} onActivate={() => toggle("stamps")}>
             <motion.div animate={{ y: state.stamps ? -10 : 0 }}>
               <Stamps className="h-auto w-full" />
@@ -405,7 +414,7 @@ export function InteractiveDesk() {
           </InteractiveObject>
         </Slot>
 
-        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "72%", top: "48%", width: 92 }} cleanPos={{ left: "90%", top: "58%", width: 110 }} className="hidden sm:block">
+        <Slot chaos={chaos} focus={focus} chaosPos={{ left: "72%", top: "48%", width: 92 }} cleanPos={{ left: "90%", top: "58%", width: 110 }}>
           <InteractiveObject label="Take a photo" hint="SNAP" pressed={state.camera} float={chaos && !reduce} onActivate={() => toggle("camera")}>
             <Camera className="h-auto w-full" />
           </InteractiveObject>
@@ -416,6 +425,7 @@ export function InteractiveDesk() {
             <Journal className="h-auto w-full" />
           </InteractiveObject>
         </Slot>
+        </div>
 
         <AnimatePresence>
           {state.camera ? (
@@ -432,7 +442,7 @@ export function InteractiveDesk() {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-30 mt-2 flex justify-center md:absolute md:inset-x-0 md:bottom-8 md:mt-0">
+      <div className="relative z-30 mt-3 flex shrink-0 justify-center lg:absolute lg:inset-x-0 lg:bottom-8 lg:mt-0">
         <ChaosCleanToggle />
       </div>
       <p className="sr-only">
@@ -442,6 +452,65 @@ export function InteractiveDesk() {
       </p>
       </div>
     </section>
+  );
+}
+
+function MobileCopy({ chaos }: { chaos: boolean }) {
+  return (
+    <div className="relative h-full min-h-0 lg:hidden">
+      <motion.div
+        className="absolute inset-0 flex flex-col justify-center"
+        animate={{ opacity: chaos ? 1 : 0, y: chaos ? 0 : 8 }}
+        transition={spring}
+        style={{ pointerEvents: chaos ? "auto" : "none" }}
+        aria-hidden={!chaos}
+      >
+        <p className="font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+          The world is full of unfinished ideas
+        </p>
+        <p className="mt-2 font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+          &amp; frustrating experiences
+        </p>
+        <p className="mt-4 self-start bg-[#ead7b8] px-2.5 py-1 font-serif text-[16px] font-bold italic text-ink">
+          I design the path
+        </p>
+        <p className="mt-3 font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+          that make them seamless
+        </p>
+        <a
+          href={site.social.email}
+          className="mt-4 inline-block break-all font-hand text-[16px] text-ink/70 underline decoration-ink/20 underline-offset-4"
+        >
+          {site.email}
+        </a>
+      </motion.div>
+
+      <motion.div
+        className="absolute inset-0 flex flex-col justify-center text-center"
+        animate={{ opacity: chaos ? 0 : 1, y: chaos ? 8 : 0 }}
+        transition={spring}
+        style={{ pointerEvents: chaos ? "none" : "auto" }}
+        aria-hidden={chaos}
+      >
+        <h1 className="font-script text-[clamp(2.5rem,12vw,3.6rem)] leading-[1.1] text-[#3e3e42]">
+          {site.name}
+        </h1>
+        <p className="mt-3 text-[15px] text-ink/80">{site.cleanRole}</p>
+        <p className="mt-0.5 text-[15px] text-ink/80">{site.expertRole}</p>
+        <p className="mx-auto mt-5 max-w-[28ch] font-hand text-[clamp(1.25rem,4.8vw,1.55rem)] leading-snug text-ink/80">
+          {site.tagline}
+        </p>
+        <p className="mx-auto mt-3 max-w-[34ch] font-hand text-[15px] leading-snug text-ink/70">
+          {site.taglineAsk}
+        </p>
+        <a
+          href={site.social.email}
+          className="mx-auto mt-1 inline-block font-hand text-[15px] text-ink/70 underline decoration-ink/25 underline-offset-4"
+        >
+          {site.email}
+        </a>
+      </motion.div>
+    </div>
   );
 }
 
@@ -462,12 +531,12 @@ function Phrase({
         "absolute z-10 font-inter text-[clamp(1.35rem,2.4vw,2rem)] font-semibold uppercase leading-[1.35] text-ink",
         className,
       )}
-        animate={{
-          left: chaosPos.left,
-          top: chaosPos.top,
-          opacity: chaos ? 1 : 0,
-        }}
-        style={{ pointerEvents: chaos ? "auto" : "none" }}
+      animate={{
+        left: chaosPos.left,
+        top: chaosPos.top,
+        opacity: chaos ? 1 : 0,
+      }}
+      style={{ pointerEvents: chaos ? "auto" : "none" }}
       transition={spring}
     >
       {children}

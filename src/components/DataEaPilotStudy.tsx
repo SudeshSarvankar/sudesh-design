@@ -35,7 +35,7 @@ const toc = [
 export function DataEaPilotStudy({ project }: { project: Project }) {
   return (
     <article className="bg-cream pb-20 pt-28">
-      <div className="mx-auto w-full max-w-[1080px] px-6 md:px-16">
+      <div className="mx-auto w-full max-w-[1080px] px-4 sm:px-6 md:px-16">
         <StudyBackLink href="/#featured-work" label="Back to work" variant="minimal" />
         <p className="mt-10 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/40">
           UBS · Enterprise architecture · Gen AI assistant
@@ -104,7 +104,7 @@ export function DataEaPilotStudy({ project }: { project: Project }) {
           <ol className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[14px] text-ink/70">
             {toc.map(([label, href]) => (
               <li key={href}>
-                <a href={href} className="underline decoration-ink/20 underline-offset-4">
+                <a href={href} className="inline-flex min-h-11 items-center underline decoration-ink/20 underline-offset-4">
                   {label}
                 </a>
               </li>
@@ -488,7 +488,7 @@ export function DataEaPilotStudy({ project }: { project: Project }) {
           <Note n={4}>Confidence level. Calculated from guardrails app owners set, not guessed by the model.</Note>
           <Note n={5}>Flag to the owner. If something looks wrong, one tap sends it to the person who can fix it.</Note>
         </ol>
-        <div className="mt-8 overflow-x-auto">
+        <div className="mt-8 max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[640px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>
@@ -702,7 +702,7 @@ export function DataEaPilotStudy({ project }: { project: Project }) {
         <p className="mt-3 text-[13px] text-ink/45">
           Illustrative values · real method, reimagined numbers
         </p>
-        <div className="mt-6 overflow-x-auto">
+        <div className="mt-6 max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[720px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>
@@ -901,7 +901,7 @@ function Section({
     <section
       id={id}
       className={cn(
-        "mt-4 scroll-mt-28 px-6 py-16 md:px-16 md:py-20",
+        "mt-4 scroll-mt-28 px-4 py-12 sm:px-6 sm:py-16 md:px-16 md:py-20",
         tone === "paper" ? "bg-paper" : "bg-cream",
       )}
     >

@@ -9,7 +9,7 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="relative bg-cream">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-[88px] md:py-12">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between md:px-[88px] md:py-12">
         <nav aria-label="Footer links">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-ink/80">
             {footerLinks
@@ -18,7 +18,7 @@ export function Footer() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="inline-flex items-center gap-1 transition hover:text-ink"
+                  className="inline-flex min-h-11 items-center gap-1 transition hover:text-ink"
                   target="_blank"
                   rel="noreferrer"
                 >

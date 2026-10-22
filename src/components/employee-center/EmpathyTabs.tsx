@@ -106,7 +106,7 @@ export function EmpathyTabs() {
 
   return (
     <div>
-      <div className="-mx-6 overflow-x-auto px-6 md:mx-0 md:px-0">
+      <div className="-mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
         <div className="flex min-w-max gap-2">
           {people.map((item) => (
             <button
@@ -114,7 +114,7 @@ export function EmpathyTabs() {
               type="button"
               onClick={() => setActive(item.tab)}
               className={cn(
-                "rounded-full px-3 py-1.5 text-[13px] transition",
+                "min-h-11 rounded-full px-3 py-1.5 text-[13px] transition",
                 item.tab === active
                   ? "bg-ink text-cream"
                   : "border border-line bg-paper text-ink/60 hover:text-ink",
@@ -126,7 +126,7 @@ export function EmpathyTabs() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-[24px] border border-line bg-paper p-5 md:p-8">
+      <div className="mt-8 rounded-[24px] border border-line bg-paper p-4 md:p-8">
         <div className="flex items-start gap-4">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#ead7b8] text-[14px] font-semibold">
             {person.initials}

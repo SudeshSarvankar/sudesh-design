@@ -8,13 +8,13 @@ export function CaseStudies() {
       aria-label="Featured work"
       className="scroll-mt-24 bg-white"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 py-20 md:px-[88px] md:py-[100px]">
+      <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 md:px-[88px] md:py-[100px]">
         <div className="mx-auto flex w-full max-w-[1266px] flex-col gap-12 md:gap-16">
           <div className="flex flex-col gap-4">
             <p className="font-serif text-[15px] uppercase tracking-[0.08em] text-muted">
               Case studies
             </p>
-            <h2 className="max-w-[469px] font-sans text-[34px] font-bold leading-[1.15] text-ink md:text-[44px]">
+            <h2 className="max-w-[469px] font-sans text-[28px] font-bold leading-[1.15] text-ink sm:text-[34px] md:text-[44px]">
               Think. Design. Develop. Launch.{" "}
               <span className="text-[rgba(98,108,129,0.5)]">Repeat</span>
             </h2>

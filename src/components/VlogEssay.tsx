@@ -9,14 +9,14 @@ export function VlogEssay({ item }: { item: Vlog }) {
 
   return (
     <article className="bg-cream pb-24 pt-28">
-      <div className="mx-auto w-full max-w-[860px] px-6 md:px-[88px]">
+      <div className="mx-auto w-full max-w-[860px] px-4 sm:px-6 md:px-[88px]">
         <StudyBackLink href="/#writing" label="Back" variant="minimal" />
 
         <p className="mt-10 font-hand text-[28px] text-[#3a5c86]">{item.number}</p>
         <h1 className="mt-1 font-inter text-[clamp(2rem,5vw,3.2rem)] font-semibold tracking-[-0.03em] text-ink">
           {item.title}
         </h1>
-        <p className="mt-4 max-w-[46ch] font-serif text-[22px] italic leading-snug text-muted">
+        <p className="mt-4 max-w-[46ch] font-serif text-[18px] italic leading-snug text-muted sm:text-[22px]">
           {item.dek}
         </p>
 

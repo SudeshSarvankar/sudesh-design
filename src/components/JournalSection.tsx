@@ -16,7 +16,7 @@ import {
 import { site } from "@/data/site";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export function JournalSection() {
   const [open, setOpen] = useState(false);
@@ -59,7 +59,7 @@ export function JournalSection() {
       <div className="bg-white">
         <TornEdge fill="#f4f0e5" />
       </div>
-      <div className="relative flex w-full items-center justify-center overflow-visible bg-cream px-4 py-14 md:h-[918px] md:px-[88px] md:py-0">
+      <div className="relative flex w-full items-center justify-center overflow-x-clip bg-cream px-4 py-12 md:h-[918px] md:overflow-visible md:px-[88px] md:py-0">
         {open ? (
           <button
             type="button"
@@ -97,14 +97,46 @@ export function JournalSection() {
   );
 }
 
+const BOOK_W = 980;
+const BOOK_H = 680;
+
 function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
   const t = reduce
     ? { duration: 0.01 }
     : { duration: 0.95, ease: [0.45, 0.05, 0.2, 1] as const };
 
+  useLayoutEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const update = () => {
+      setScale(Math.min(1, el.clientWidth / BOOK_W));
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
-      className="relative mx-auto h-[min(78vw,680px)] w-full min-h-[440px] max-w-[980px]"
+      ref={stageRef}
+      className="relative mx-auto w-full max-w-[980px]"
+      style={{ height: BOOK_H * scale }}
+    >
+      <div
+        className="absolute left-0 top-0"
+        style={{
+          width: BOOK_W,
+          height: BOOK_H,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          transformStyle: "preserve-3d",
+        }}
+      >
+    <div
+      className="relative h-full w-full"
       style={{ perspective: 2200 }}
     >
       <motion.div
@@ -168,6 +200,8 @@ function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
         </motion.div>
       </motion.div>
     </div>
+      </div>
+    </div>
   );
 }
 
@@ -186,7 +220,7 @@ function ClosedCover() {
         <div className="absolute inset-y-0 left-0 w-3 bg-[#174a38]" />
         <div className="absolute -top-2 left-[18%] h-3 w-10 rounded-sm bg-[#8fbf8a]" />
         <div className="absolute bottom-0 left-[18%] h-10 w-3 rounded-b-sm bg-[#8fbf8a]" />
-        <p className="absolute left-1/2 top-10 -translate-x-1/2 font-script text-4xl text-[#e7d7a2] md:text-5xl">
+        <p className="absolute left-1/2 top-10 -translate-x-1/2 font-script text-5xl text-[#e7d7a2]">
           Journal
         </p>
         <div className="absolute inset-x-6 top-[26%] h-[62%]">
@@ -216,11 +250,11 @@ function ClosedCover() {
 
 function LeftPage() {
   return (
-    <div className="notebook-dots relative h-full p-6 text-left md:p-10">
+    <div className="notebook-dots relative h-full p-10 text-left">
       <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/40">
         About
       </p>
-      <h2 className="mt-1 font-script text-4xl text-ink md:text-5xl">
+      <h2 className="mt-1 font-script text-5xl text-ink">
         {site.name}
       </h2>
       <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -234,10 +268,10 @@ function LeftPage() {
       </p>
       <ul className="mt-6 space-y-2.5 text-sm text-ink/80">
         {site.timeline.map((item) => (
-          <li key={item.label} className="flex items-start justify-between gap-4">
-            <span className="flex items-center gap-2">
+          <li key={item.label} className="flex items-start justify-between gap-3">
+            <span className="flex min-w-0 items-start gap-2">
               <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#7ea0c4]" />
-              {item.label}
+              <span className="min-w-0 break-words">{item.label}</span>
             </span>
             <span className="shrink-0 text-[12px] text-ink/45">{item.years}</span>
           </li>
@@ -256,11 +290,11 @@ function LeftPage() {
       <p className="mt-6 font-hand text-[22px] leading-snug text-[#3a5c86]">
         {site.journalLine}
       </p>
-      <p className="mt-2 font-hand text-lg text-ink/70">
+      <p className="mt-2 break-words font-hand text-lg text-ink/70">
         {site.taglineAsk}{" "}
         <a
           href={`mailto:${site.email}`}
-          className="relative z-30 underline decoration-[#3a5c86]/30 underline-offset-4"
+          className="relative z-30 inline break-all underline decoration-[#3a5c86]/30 underline-offset-4"
           onClick={(event) => event.stopPropagation()}
           onPointerDown={(event) => event.stopPropagation()}
         >
@@ -274,7 +308,7 @@ function LeftPage() {
 
 function RightPage() {
   return (
-    <div className="notebook-dots relative h-full overflow-hidden p-6 md:p-9">
+    <div className="notebook-dots relative h-full overflow-hidden p-9">
       <div className="absolute right-5 top-5 flex items-center gap-2">
         <CursorMark className="h-9 w-8 rotate-[12deg] drop-shadow-md" />
         <span className="text-[11px] text-ink/45">Cursor</span>

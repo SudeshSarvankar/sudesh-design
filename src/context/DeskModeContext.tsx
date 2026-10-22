@@ -22,7 +22,11 @@ const DeskModeContext = createContext<DeskModeContextValue | null>(null);
 export function scrollHeroTo(mode: Extract<DeskMode, "chaos" | "clean">) {
   const el = document.getElementById("hero");
   if (!el) return;
-  const top = mode === "chaos" ? el.offsetTop : el.offsetTop + window.innerHeight;
+  const compact = window.matchMedia("(max-width: 1023px)").matches;
+  const top =
+    compact || mode === "chaos"
+      ? el.offsetTop
+      : el.offsetTop + window.innerHeight;
   window.scrollTo({ top, behavior: "smooth" });
 }
 

@@ -9,7 +9,7 @@ export function ExperimentStudy({ item }: { item: Experiment }) {
 
   return (
     <article className="bg-cream pb-24 pt-28">
-      <div className="mx-auto w-full max-w-[980px] px-6 md:px-[88px]">
+      <div className="mx-auto w-full max-w-[980px] px-4 sm:px-6 md:px-[88px]">
         <StudyBackLink href="/#experiments" label="Back to experiments" />
 
         <p className="mt-10 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/40">
@@ -18,7 +18,7 @@ export function ExperimentStudy({ item }: { item: Experiment }) {
         <h1 className="mt-3 font-inter text-[clamp(2rem,5vw,3.4rem)] font-semibold tracking-[-0.03em] text-ink">
           {item.title}
         </h1>
-        <p className="mt-4 max-w-[46ch] font-serif text-[22px] italic leading-snug text-muted">
+        <p className="mt-4 max-w-[46ch] font-serif text-[18px] italic leading-snug text-muted sm:text-[22px]">
           {item.description}
         </p>
 
@@ -55,7 +55,7 @@ function StudyBlockView({ block }: { block: StudyBlock }) {
   }
   if (block.type === "h2") {
     return (
-      <h2 className="font-inter text-[28px] font-semibold tracking-[-0.03em] text-ink md:text-[32px]">
+      <h2 className="font-inter text-[24px] font-semibold tracking-[-0.03em] text-ink md:text-[32px]">
         {block.text}
       </h2>
     );

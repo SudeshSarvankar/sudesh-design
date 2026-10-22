@@ -57,7 +57,7 @@ function ToggleChip({
       aria-label={label}
       aria-pressed={active}
       onClick={onClick}
-      className="grid h-12 w-12 place-items-center rounded-[14px] border border-line bg-paper text-ink/70 shadow-[0_8px_18px_rgba(40,32,18,0.08)]"
+      className="grid h-12 w-12 place-items-center touch-manipulation rounded-[14px] border border-line bg-paper text-ink/70 shadow-[0_8px_18px_rgba(40,32,18,0.08)]"
       animate={{
         backgroundColor: active ? "#c4b49a" : "#fffdf8",
         color: active ? "#fffdf8" : "#5c564c",

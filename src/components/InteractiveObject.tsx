@@ -33,7 +33,7 @@ export function InteractiveObject({
       aria-label={label}
       aria-pressed={pressed}
       className={cn(
-        "group relative cursor-none rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink/40",
+        "group relative min-h-12 min-w-12 touch-manipulation select-none rounded-sm [-webkit-tap-highlight-color:transparent] max-md:cursor-pointer md:cursor-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink/40",
         className,
       )}
       onMouseEnter={() => setHint(hint)}

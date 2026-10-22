@@ -18,7 +18,7 @@ function Chip({
   return (
     <span
       className={cn(
-        "inline-flex max-w-full rounded-[12px] border px-3 py-2 text-left text-[13px] leading-snug",
+        "inline-flex max-w-full break-words rounded-[12px] border px-3 py-2 text-left text-[13px] leading-snug",
         styles[kind],
       )}
     >

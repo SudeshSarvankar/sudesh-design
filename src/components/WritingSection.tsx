@@ -27,9 +27,9 @@ export function WritingSection() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-16 pt-6 md:px-[88px] md:pb-[88px]" style={{ marginTop: 18 }}>
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 pb-16 pt-6 sm:px-6 md:px-[88px] md:pb-[88px]" style={{ marginTop: 18 }}>
         <header className="mb-8 max-w-2xl md:mb-10">
-          <h2 className="font-inter text-[32px] font-semibold tracking-[-0.03em] text-ink md:text-[40px]">
+          <h2 className="font-inter text-[26px] font-semibold tracking-[-0.03em] text-ink sm:text-[32px] md:text-[40px]">
             A Record of Curiosity
           </h2>
           <p className="mt-3 font-serif text-[18px] italic leading-snug text-muted md:text-[20px]">
@@ -41,7 +41,7 @@ export function WritingSection() {
         <div
           role="list"
           aria-label="Essays"
-          className="-mx-6 flex gap-5 overflow-x-auto px-6 pb-4 md:-mx-0 md:px-0"
+          className="-mx-4 flex gap-5 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 md:-mx-0 md:px-0"
         >
           {vlogs.map((item) => (
             <a
@@ -49,7 +49,7 @@ export function WritingSection() {
               role="listitem"
               href={`/writing/${item.slug}`}
               aria-label={`Read essay: ${item.title}`}
-              className="w-[min(280px,78vw)] shrink-0"
+              className="w-[min(280px,calc(100vw-2.5rem))] shrink-0"
               onMouseEnter={() => setHint("READ")}
               onMouseLeave={() => setHint(null)}
             >

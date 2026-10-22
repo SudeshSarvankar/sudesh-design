@@ -530,7 +530,7 @@ export function ApprovalsHubScreen() {
       <ScreenLabel path="intranet / employee-center / approvals" />
       <Frame>
         <Bar title="Approvals hub" right={<Pill tone="wait">5 waiting</Pill>} />
-        <div className="overflow-x-auto">
+        <div className="max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-[560px] text-left text-[14px]">
             <thead className="bg-[#f3f1ea] text-[11px] uppercase tracking-[0.12em] text-ink/45">
               <tr>

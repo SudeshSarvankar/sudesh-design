@@ -40,7 +40,7 @@ export function ScenariosInner() {
 
   return (
     <div>
-      <div className="-mx-6 overflow-x-auto px-6 md:mx-0 md:px-0">
+      <div className="-mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
         <div className="flex min-w-max gap-2 pb-2">
           {tabs.map((item) => (
             <button
@@ -48,7 +48,7 @@ export function ScenariosInner() {
               type="button"
               onClick={() => setTab(item)}
               className={cn(
-                "rounded-full px-3 py-1.5 text-[13px] transition",
+                "min-h-11 rounded-full px-3 py-1.5 text-[13px] transition",
                 tab === item
                   ? "bg-ink text-cream"
                   : "border border-line bg-paper text-ink/60 hover:text-ink",
