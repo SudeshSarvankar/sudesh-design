@@ -271,7 +271,7 @@ function RippyBanner({ src, srcB }: { src: string; srcB: string }) {
   return (
     <div className="absolute inset-0 bg-[#ebe7e0]">
       <div className="absolute right-[-10%] top-[-16%] h-40 w-40 rounded-full bg-[#dde3f0]" />
-      <div className="absolute left-6 top-6 z-10">
+      <div className="absolute left-3 top-3 z-10 sm:left-6 sm:top-6">
         <Label>Assistant</Label>
       </div>
       <Shot

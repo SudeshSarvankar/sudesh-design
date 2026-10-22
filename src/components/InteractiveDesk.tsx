@@ -218,7 +218,7 @@ export function InteractiveDesk() {
       aria-label="Hero"
       className="relative isolate h-[100svh] overflow-x-clip bg-cream lg:h-[200vh]"
     >
-      <div className="flex h-[100svh] flex-col overflow-x-clip px-4 pb-6 pt-[5.25rem] lg:sticky lg:top-0 lg:h-screen lg:px-6 lg:pb-8 lg:pt-28">
+      <div className="flex h-[100svh] flex-col overflow-x-clip px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[5.25rem] lg:sticky lg:top-0 lg:h-screen lg:px-6 lg:pb-8 lg:pt-28">
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-20 hidden lg:block"
@@ -460,26 +460,27 @@ function MobileCopy({ chaos }: { chaos: boolean }) {
     <div className="relative h-full min-h-0 lg:hidden">
       <motion.div
         className="absolute inset-0 flex flex-col justify-center"
+        initial={false}
         animate={{ opacity: chaos ? 1 : 0, y: chaos ? 0 : 8 }}
         transition={spring}
         style={{ pointerEvents: chaos ? "auto" : "none" }}
         aria-hidden={!chaos}
       >
-        <p className="font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+        <p className="max-w-[18ch] font-inter text-[clamp(1.15rem,5.4vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
           The world is full of unfinished ideas
         </p>
-        <p className="mt-2 font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+        <p className="mt-2 max-w-[18ch] font-inter text-[clamp(1.15rem,5.4vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
           &amp; frustrating experiences
         </p>
         <p className="mt-4 self-start bg-[#ead7b8] px-2.5 py-1 font-serif text-[16px] font-bold italic text-ink">
           I design the path
         </p>
-        <p className="mt-3 font-inter text-[clamp(1.25rem,6.2vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
+        <p className="mt-3 max-w-[16ch] font-inter text-[clamp(1.15rem,5.4vw,1.75rem)] font-semibold uppercase leading-[1.2] tracking-[-0.03em] text-ink">
           that make them seamless
         </p>
         <a
           href={site.social.email}
-          className="mt-4 inline-block break-all font-hand text-[16px] text-ink/70 underline decoration-ink/20 underline-offset-4"
+          className="mt-4 inline-block max-w-full break-all font-hand text-[16px] text-ink/70 underline decoration-ink/20 underline-offset-4"
         >
           {site.email}
         </a>
@@ -487,17 +488,18 @@ function MobileCopy({ chaos }: { chaos: boolean }) {
 
       <motion.div
         className="absolute inset-0 flex flex-col justify-center text-center"
+        initial={false}
         animate={{ opacity: chaos ? 0 : 1, y: chaos ? 8 : 0 }}
         transition={spring}
         style={{ pointerEvents: chaos ? "none" : "auto" }}
         aria-hidden={chaos}
       >
-        <h1 className="font-script text-[clamp(2.5rem,12vw,3.6rem)] leading-[1.1] text-[#3e3e42]">
+        <h1 className="font-script text-[clamp(2.35rem,11vw,3.6rem)] leading-[1.1] text-[#3e3e42]">
           {site.name}
         </h1>
         <p className="mt-3 text-[15px] text-ink/80">{site.cleanRole}</p>
-        <p className="mt-0.5 text-[15px] text-ink/80">{site.expertRole}</p>
-        <p className="mx-auto mt-5 max-w-[28ch] font-hand text-[clamp(1.25rem,4.8vw,1.55rem)] leading-snug text-ink/80">
+        <p className="mt-0.5 px-1 text-[15px] text-ink/80">{site.expertRole}</p>
+        <p className="mx-auto mt-5 max-w-[28ch] px-1 font-hand text-[clamp(1.15rem,4.4vw,1.55rem)] leading-snug text-ink/80">
           {site.tagline}
         </p>
         <p className="mx-auto mt-3 max-w-[34ch] font-hand text-[15px] leading-snug text-ink/70">
@@ -505,7 +507,7 @@ function MobileCopy({ chaos }: { chaos: boolean }) {
         </p>
         <a
           href={site.social.email}
-          className="mx-auto mt-1 inline-block font-hand text-[15px] text-ink/70 underline decoration-ink/25 underline-offset-4"
+          className="mx-auto mt-1 inline-block max-w-full break-all px-2 font-hand text-[15px] text-ink/70 underline decoration-ink/25 underline-offset-4"
         >
           {site.email}
         </a>

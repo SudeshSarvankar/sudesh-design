@@ -59,7 +59,7 @@ export function JournalSection() {
       <div className="bg-white">
         <TornEdge fill="#f4f0e5" />
       </div>
-      <div className="relative flex w-full items-center justify-center overflow-x-clip bg-cream px-4 py-12 md:h-[918px] md:overflow-visible md:px-[88px] md:py-0">
+      <div className="relative flex w-full items-center justify-center overflow-x-clip bg-cream px-4 py-12 md:h-[918px] md:px-[88px] md:py-0 lg:overflow-visible">
         {open ? (
           <button
             type="button"
@@ -102,7 +102,7 @@ const BOOK_H = 680;
 
 function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
   const stageRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [width, setWidth] = useState(BOOK_W);
   const t = reduce
     ? { duration: 0.01 }
     : { duration: 0.95, ease: [0.45, 0.05, 0.2, 1] as const };
@@ -111,7 +111,7 @@ function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
     const el = stageRef.current;
     if (!el) return;
     const update = () => {
-      setScale(Math.min(1, el.clientWidth / BOOK_W));
+      setWidth(el.clientWidth);
     };
     update();
     const observer = new ResizeObserver(update);
@@ -119,21 +119,30 @@ function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
     return () => observer.disconnect();
   }, []);
 
+  const compact = width < 720;
+  const openScale = Math.min(1, width / BOOK_W);
+  const closedScale = compact
+    ? Math.min(1.35, Math.min(width * 0.9, 430) / 490)
+    : 1;
+  const scale = open ? openScale : closedScale;
+  const offsetX = compact && !open ? width / 2 - 490 * scale : 0;
+
   return (
     <div
       ref={stageRef}
       className="relative mx-auto w-full max-w-[980px]"
       style={{ height: BOOK_H * scale }}
     >
-      <div
+      <motion.div
         className="absolute left-0 top-0"
         style={{
           width: BOOK_W,
           height: BOOK_H,
-          transform: `scale(${scale})`,
           transformOrigin: "top left",
           transformStyle: "preserve-3d",
         }}
+        animate={{ scale, x: offsetX }}
+        transition={t}
       >
     <div
       className="relative h-full w-full"
@@ -200,7 +209,7 @@ function JournalBook({ open, reduce }: { open: boolean; reduce: boolean }) {
         </motion.div>
       </motion.div>
     </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

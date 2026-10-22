@@ -23,10 +23,12 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const sync = () => setHash(window.location.hash.replace("#", ""));
     sync();
+    setReady(true);
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
   }, [pathname]);
@@ -62,7 +64,10 @@ export function Navbar() {
               .map((link) => {
               const Icon = link.icon;
               const active =
-                !link.external && pathname === "/" && hash === link.hash;
+                ready &&
+                !link.external &&
+                pathname === "/" &&
+                hash === link.hash;
               const className = cn(
                 "group inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-0.5 rounded-full px-0.5 py-2 text-[11px] font-medium tracking-[-0.02em] text-ink/65 transition duration-250 hover:-translate-y-0.5 hover:text-ink sm:min-h-0 sm:gap-1.5 sm:px-2 sm:text-[14px] md:w-auto md:gap-2 md:px-4 md:text-[16px] lg:px-5 lg:text-[18px]",
                 active && "bg-cream text-ink",
