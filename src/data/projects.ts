@@ -45,7 +45,6 @@ export const projects: Project[] = [
     accent: "#ece7df",
     device: "phone",
     cover: "/work/ui/bajaj.png",
-    href: "https://www.figma.com/proto/UeLblMIYwR2l9RkZBRBX9P/Case-study-(Original))?node-id=1788%3A116&scaling=min-zoom&page-id=1788%3A108",
   },
   {
     slug: "blubunny",

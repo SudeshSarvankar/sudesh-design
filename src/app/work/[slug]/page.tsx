@@ -1,3 +1,4 @@
+import { BajajMarketsStudy } from "@/components/BajajMarketsStudy";
 import { DataEaPilotStudy } from "@/components/DataEaPilotStudy";
 import { EmployeeCenterStudy } from "@/components/EmployeeCenterStudy";
 import { StudyBackLink } from "@/components/StudyBackLink";
@@ -41,6 +42,10 @@ export default async function CaseStudyPage({
 
   if (project.slug === "ubs-data-ea-pilot") {
     return <DataEaPilotStudy project={project} />;
+  }
+
+  if (project.slug === "bajaj-markets") {
+    return <BajajMarketsStudy project={project} />;
   }
 
   return (
