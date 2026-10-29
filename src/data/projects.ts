@@ -67,7 +67,6 @@ export const projects: Project[] = [
     accent: "#ece8de",
     device: "laptop",
     cover: "/work/ui/fielda.png",
-    href: "https://www.figma.com/proto/UeLblMIYwR2l9RkZBRBX9P/Case-study--Original--?node-id=654-805&scaling=min-zoom&page-id=654%3A804",
   },
   {
     slug: "rippy",
