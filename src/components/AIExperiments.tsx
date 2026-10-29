@@ -3,7 +3,6 @@
 import { ExperimentPreview } from "@/components/ExperimentPreview";
 import { useCursorHint } from "@/context/CursorContext";
 import { experiments } from "@/data/experiments";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -49,12 +48,11 @@ export function AIExperiments() {
                   <Link
                     href={`/experiments/${item.slug}`}
                     aria-label={`Read more: ${item.title}`}
-                    className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm text-ink"
+                    className="mt-4 inline-flex min-h-11 items-center text-sm text-ink"
                     onMouseEnter={() => setHint("READ")}
                     onMouseLeave={() => setHint(null)}
                   >
-                    Read more →
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    Read more
                   </Link>
                 </div>
               </motion.article>
