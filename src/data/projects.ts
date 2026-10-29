@@ -69,7 +69,7 @@ export const projects: Project[] = [
     cover: "/work/ui/fielda.png",
   },
   {
-    slug: "rippy",
+    slug: "rippey",
     number: "06",
     title: "Rippy",
     description:
@@ -79,7 +79,6 @@ export const projects: Project[] = [
     device: "phones",
     cover: "/work/ui/rippy-a.png",
     coverSecondary: "/work/ui/rippy-b.png",
-    href: "https://www.figma.com/proto/UeLblMIYwR2l9RkZBRBX9P/Case-study-(Original))?node-id=993%3A1001&scaling=min-zoom&page-id=103%3A2",
   },
 ];
 

@@ -23,7 +23,7 @@ export function ProjectVisual({
       {project.slug === "fielda" ? <FieldaBanner src={project.cover!} /> : null}
       {project.slug === "bajaj-markets" ? <BajajBanner src={project.cover!} /> : null}
       {project.slug === "blubunny" ? <BlubunnyBanner src={project.cover!} /> : null}
-      {project.slug === "rippy" ? (
+      {project.slug === "rippey" ? (
         <RippyBanner src={project.cover!} srcB={project.coverSecondary!} />
       ) : null}
     </div>

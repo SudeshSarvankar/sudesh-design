@@ -14,7 +14,8 @@ export function generateStaticParams() {
         !project.href &&
         !project.comingSoon &&
         project.slug !== "blubunny" &&
-        project.slug !== "fielda",
+        project.slug !== "fielda" &&
+        project.slug !== "rippey",
     )
     .map((project) => ({ slug: project.slug }));
 }
