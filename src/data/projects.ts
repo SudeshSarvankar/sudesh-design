@@ -56,7 +56,6 @@ export const projects: Project[] = [
     accent: "#e9efe6",
     device: "phone",
     cover: "/work/ui/blubunny.png",
-    href: "https://www.figma.com/proto/UeLblMIYwR2l9RkZBRBX9P/Case-study--Original--?node-id=1888-110&scaling=min-zoom&page-id=1888%3A109",
   },
   {
     slug: "fielda",

@@ -9,7 +9,10 @@ import { notFound, redirect } from "next/navigation";
 
 export function generateStaticParams() {
   return projects
-    .filter((project) => !project.href && !project.comingSoon)
+    .filter(
+      (project) =>
+        !project.href && !project.comingSoon && project.slug !== "blubunny",
+    )
     .map((project) => ({ slug: project.slug }));
 }
 
