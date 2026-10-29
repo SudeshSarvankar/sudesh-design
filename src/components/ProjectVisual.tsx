@@ -22,11 +22,7 @@ export function ProjectVisual({
       {project.slug === "ubs-data-ea-pilot" ? <DataEaBanner /> : null}
       {project.slug === "fielda" ? <FieldaBanner src={project.cover!} /> : null}
       {project.slug === "bajaj-markets" ? <BajajBanner src={project.cover!} /> : null}
-      {project.slug === "quality-kiosk" ? (
-        <QualityBanner src={project.cover!} />
-      ) : null}
       {project.slug === "blubunny" ? <BlubunnyBanner src={project.cover!} /> : null}
-      {project.slug === "rpa-labs" ? <RpaBanner src={project.cover!} /> : null}
       {project.slug === "rippy" ? (
         <RippyBanner src={project.cover!} srcB={project.coverSecondary!} />
       ) : null}
@@ -189,31 +185,6 @@ function BajajBanner({ src }: { src: string }) {
   );
 }
 
-function QualityBanner({ src }: { src: string }) {
-  return (
-    <div className="absolute inset-0 bg-[#e8efe8]">
-      <div className="absolute left-[-10%] top-[20%] h-[120%] w-[50%] rounded-full bg-[#d7ebe3]" />
-      <Shot
-        src={src}
-        className="absolute top-[-8%] bottom-[18%] left-[28%] right-[-8%] rounded-[22px] transition duration-700 group-hover/card:translate-y-1"
-        position="70% 32%"
-        zoom={1.14}
-      />
-      <div className="absolute left-3 top-3 z-10 sm:left-6 sm:top-6">
-        <Label>Quality</Label>
-        <div className="mt-3 grid h-12 w-12 place-items-center rounded-full border border-white/80 bg-white/80 text-[11px] text-ink/50 shadow-sm sm:mt-5 sm:h-16 sm:w-16">
-          96%
-        </div>
-      </div>
-      <div className="absolute bottom-3 left-3 z-10 flex max-w-[70%] flex-wrap gap-1.5 text-[10px] text-ink/45 sm:bottom-5 sm:left-6 sm:gap-2">
-        <span className="rounded-full bg-white/85 px-2.5 py-1">Passed</span>
-        <span className="rounded-full bg-white/70 px-2.5 py-1">Running</span>
-        <span className="rounded-full bg-white/55 px-2.5 py-1">Blocked</span>
-      </div>
-    </div>
-  );
-}
-
 function BlubunnyBanner({ src }: { src: string }) {
   return (
     <div className="absolute inset-0 bg-[#e9efe6]">
@@ -243,26 +214,6 @@ function BlubunnyBanner({ src }: { src: string }) {
         className="absolute top-8 bottom-[-12%] left-[48%] right-[-4%] rotate-[3deg] rounded-[24px] transition duration-700 group-hover/card:rotate-0"
         position="center"
       />
-    </div>
-  );
-}
-
-function RpaBanner({ src }: { src: string }) {
-  return (
-    <div className="absolute inset-0 bg-[#e9ebf2]">
-      <div className="absolute bottom-[-20%] left-[-10%] h-64 w-64 rounded-full bg-[#dde0ea]" />
-      <Shot
-        src={src}
-        className="absolute left-[6%] top-[10%] h-[62%] w-[70%] rounded-[20px] transition duration-700 group-hover/card:-translate-y-1"
-        position="center"
-      />
-      <div className="absolute bottom-3 right-3 w-[46%] rounded-2xl bg-white/80 p-2 shadow-[0_10px_20px_rgba(58,55,50,0.08)] sm:bottom-5 sm:right-5 sm:w-[42%] sm:p-3">
-        <p className="text-[10px] uppercase tracking-[0.14em] text-ink/35">
-          Control room
-        </p>
-        <p className="mt-1 font-serif text-[13px] text-ink/70 sm:text-[18px]">Documents 32k</p>
-        <p className="mt-1 text-[11px] text-ink/45">Mail · Rates · Invoices</p>
-      </div>
     </div>
   );
 }

@@ -19,7 +19,7 @@ export function CaseStudies() {
               <span className="text-[rgba(98,108,129,0.5)]">Repeat</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 gap-x-[33px] gap-y-14 md:grid-cols-2">
+          <div className="grid grid-cols-1 items-stretch gap-x-0 gap-y-12 sm:gap-y-14 md:grid-cols-2 md:gap-x-[33px] md:gap-y-16">
             {projects.map((project) => (
               <CaseStudyCard key={project.slug} project={project} />
             ))}

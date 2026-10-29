@@ -34,7 +34,7 @@ export function CaseStudyCard({ project }: { project: Project }) {
       <p className="mt-2 line-clamp-3 min-h-[4.5rem] max-w-[46ch] text-[15px] leading-relaxed text-muted">
         {project.description}
       </p>
-      <ul className="mt-4 flex flex-wrap gap-2">
+      <ul className="mt-auto flex min-h-8 flex-wrap gap-2 pt-4">
         {project.tags.map((tag) => (
           <li
             key={tag}
